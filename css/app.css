@@ -1,0 +1,98 @@
+body{
+    max-width: 1200px;
+    margin: auto;
+    font-family: "Roboto", sans-serif;
+}
+
+h2{
+    font-size: 58px;
+    text-align: center;
+    color: rgb(63, 9, 96);
+    margin-bottom: 0;
+}
+
+td{
+    text-align: center;
+    font-size: 52px;
+    border: solid black 1px;
+}
+
+.sundays{
+    color: red;
+}
+
+.weekdays td{
+    padding: 3rem 0;
+    text-align: center;
+    font-size: 23px;
+}
+
+.roboto-regular {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+form .inp{
+    display: inline;
+}
+
+input{
+    padding: 0.5rem;
+    border: solid 0.09rem rgb(77, 50, 93);
+    margin-right:   0.3rem;
+    border-radius: 5px;
+}
+
+.button{
+    background-color: rgb(63, 9, 96);
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    border: none;
+}
+
+.button:hover{
+    background-color: rgb(91, 62, 110);
+}
+
+.prevNextWrapper {
+    display: flex;                /* Use flexbox layout */
+    justify-content: space-between; /* Spread the buttons to the left and right */
+    align-items: center;            /* Vertically align them */
+    margin: 10px 0;                 /* Optional: Add some space above and below */
+}
+
+.prev a, .next a {
+    padding: 10px 20px;
+    background-color: rgb(77, 50, 93);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.prev a:hover, .next a:hover {
+    background-color: rgb(91, 62, 110);
+}
+
+table{
+    width: 100%;
+    table-layout: fixed; /* Ensures each cell has the same width */
+    border-collapse: collapse; /* Ensures no gaps between table cells */
+}
+
+.grayed-out{
+    color: rgb(160, 160, 160);
+    background-color: rgba(222, 222, 222, 0.504);
+}
+
+span{
+    font-size: 12px;
+}
+
+.weekNum{
+    font-size: 20px;
+    background-color: rgb(77, 50, 93);
+    color: white;
+}
