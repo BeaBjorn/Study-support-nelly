@@ -32,8 +32,8 @@ $prevMonth = date('Y-m-01', $timestampPreviousMonth);
 $nextMonth = date('Y-m-01', $timestampNextMonth);
 
 //=============== BEA HAR LAGT TILL ================//
-$firstDayOfMonth = date('N', strtotime($firstDateInMonth));
 $prevMonthDays = date('t', strtotime($prevMonth));
+$lastDayOfMonth = date('N', strtotime($lastDateInMonth));
 //=================================================//
 
 // Extract details about the date, if it is a valid date
@@ -94,15 +94,19 @@ $calStr .= "</tr>\n";
 
 
 //=================== BEA HAR LAGT TILL OCH ÄNDRAT =====================//
-// Print the previous month's days (grayed out)
-if ($firstDayOfMonth > 1) {
-    // Fill in days from the previous month
+// Checks if dayNum is larger than 1 (is not a monday)
+if ($dayNum > 1) {
+    // Display week number at beginning of row
     $weekNumber = date('W', strtotime("$year-$month-$date")); // Get the week number
     $calStr .= "<td class='weekNum'>$weekNumber</td>\n"; // Add the week number cell
 
-    for ($i = $firstDayOfMonth - 1; $i >= 1; $i--) {
-        $prevDate = $prevMonthDays - $i + 1;
+    // Gets dayNume - 1, counts down for as long as dayNum is larger than or equal to 1
+    for ($i = $dayNum - 1; $i >= 1; $i--) {
 
+        // Gets the value of "i" (dayNum - 1) e.g. 1 if the first day of the month is a tuesday
+        // prevDate = the number of days in previous month e.g. 30, minus i (2 if first day of month falls on a tuesday)
+        // plus 1 to display the remaining day of previous month, 30 - 2 + 1
+        $prevDate = $prevMonthDays - $i + 1;
         $calStr .= "<td class='grayed-out'>$prevDate</td>\n";
     }
 }
@@ -111,11 +115,13 @@ if ($firstDayOfMonth > 1) {
 for ($date = 1; $date <= $monthDays; $date++) {
     // Start a new row for each week
     if (date('N', strtotime("$year-$month-$date")) == 1) {
+        // Display week number at beginning of row
         $weekNumber = date('W', strtotime("$year-$month-$date")); // Get the week number
-        $calStr .= "<tr class='calBorder'>\n";
+        $calStr .= "<tr>\n";
         $calStr .= "<td class='weekNum'>$weekNumber</td>\n"; // Add the week number cell
     }
 
+    // Print dates
     $calStr .= "<td class='monthDay'>$date</td>\n";
 
     // Check if it's Sunday and close the row
@@ -124,10 +130,12 @@ for ($date = 1; $date <= $monthDays; $date++) {
     }
 }
 
-// Print next month's days (grayed out)
-$lastDayOfMonth = date('N', strtotime($lastDateInMonth));
+// Checks if last day of the month is less than 7 (not a Sunday)
 if ($lastDayOfMonth < 7) {
     // Fill in days from the next month
+    // lasDayOfMonth holds the dayNum of the last month day e.g 5 if the last date of the month falls on a Friday.
+    // The loop then calculates upwards from e.g 5 until it gets to 7
+    // Checks how many cells need to be filled after the last date of the current month
     for ($i = 1; $i <= 7 - $lastDayOfMonth; $i++) {
         $calStr .= "<td class='grayed-out'>$i</td>\n";
     }
