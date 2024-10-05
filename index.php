@@ -28,9 +28,10 @@ $lastDateInMonth = date("Y-m-$monthDays", $timestamp);
 $timestampPreviousMonth = strtotime($firstDateInMonth . "- 1 day");
 $timestampNextMonth = strtotime($lastDateInMonth . "+ 1 day");
 
-//=============== BEA HAR LAGT TILL ================//
 $prevMonth = date('Y-m-01', $timestampPreviousMonth);
 $nextMonth = date('Y-m-01', $timestampNextMonth);
+
+//=============== BEA HAR LAGT TILL ================//
 $firstDayOfMonth = date('N', strtotime($firstDateInMonth));
 $prevMonthDays = date('t', strtotime($prevMonth));
 //=================================================//
@@ -73,7 +74,7 @@ $monthImages = [
 $currentImage = $monthImages[$month] ?? 'images/default.jpg';
 
 $calStr .= "<img src='$currentImage' alt='$monthName Image' style='width:100%;'>";
-//================== BEA HAR LAGT TILL OCH ANDRAT ==================//
+//================== BEA HAR LAGT TILL OCH ÄNDRAT ==================//
 $calStr .= "<tr class='weekdays'>\n";
 $calStr .= "<td class='weekNum'>Week</td>\n";
 //==================================================================//
@@ -92,7 +93,7 @@ for ($i = 1; $i <= 7; $i++) {
 $calStr .= "</tr>\n";
 
 
-//=================== BEA HAR LAGT TILL OCH ANDRAT =====================//
+//=================== BEA HAR LAGT TILL OCH ÄNDRAT =====================//
 // Print the previous month's days (grayed out)
 if ($firstDayOfMonth > 1) {
     // Fill in days from the previous month
