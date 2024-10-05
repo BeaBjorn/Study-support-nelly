@@ -97,10 +97,12 @@ $calStr .= "</tr>\n";
 // Print the previous month's days (grayed out)
 if ($firstDayOfMonth > 1) {
     // Fill in days from the previous month
+    $weekNumber = date('W', strtotime("$year-$month-$date")); // Get the week number
+    $calStr .= "<td class='weekNum'>$weekNumber</td>\n"; // Add the week number cell
+
     for ($i = $firstDayOfMonth - 1; $i >= 1; $i--) {
         $prevDate = $prevMonthDays - $i + 1;
-        $weekNumber = date('W', strtotime("$year-$month-$date")); // Get the week number
-        $calStr .= "<td class='weekNum'>$weekNumber</td>\n"; // Add the week number cell
+
         $calStr .= "<td class='grayed-out'>$prevDate</td>\n";
     }
 }
